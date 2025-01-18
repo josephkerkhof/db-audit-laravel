@@ -28,13 +28,9 @@ jobs:
           - laravel: 11.*
             testbench: 9.*
             carbon: ^2.63
-            pest: ^3.0
-            pest_plugin: ^3.0
           - laravel: 10.*
             testbench: 8.*
             carbon: ^2.63
-            pest: ^2.0
-            pest_plugin: ^2.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace JosephKerkhof\DbAudit\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class DbAuditCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'db-audit-laravel';
 
     public $description = 'My command';
 

@@ -2,9 +2,9 @@
 
 namespace JosephKerkhof\DbAudit;
 
+use JosephKerkhof\DbAudit\Commands\DbAuditCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JosephKerkhof\DbAudit\Commands\DbAuditCommand;
 
 class DbAuditServiceProvider extends PackageServiceProvider
 {

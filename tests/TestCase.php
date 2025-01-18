@@ -3,8 +3,8 @@
 namespace JosephKerkhof\DbAudit\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use JosephKerkhof\DbAudit\DbAuditServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

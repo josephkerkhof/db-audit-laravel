@@ -20,13 +20,21 @@ jobs:
         php: [8.4, 8.3]
         laravel: [11.*, 10.*]
         stability: [prefer-lowest, prefer-stable]
+        exclude:
+          # Exclude incompatible versions
+          - laravel: 10.*
+            php: 8.4
         include:
           - laravel: 11.*
             testbench: 9.*
             carbon: ^2.63
+            pest: ^3.0
+            pest_plugin: ^3.0
           - laravel: 10.*
             testbench: 8.*
             carbon: ^2.63
+            pest: ^2.0
+            pest_plugin: ^2.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 

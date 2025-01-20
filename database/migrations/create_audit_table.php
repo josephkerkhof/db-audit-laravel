@@ -29,7 +29,6 @@ return new class extends Migration
 
                 // Regular indexes
                 $table->index(['auditable_type', 'auditable_id'], 'audits_auditable_index');
-                $table->index(['user_type', 'user_id'], 'audits_user_index');
                 $table->index('event');
                 $table->index('created_at'); // could be improved by using a partial index like YYYY-MM
             });

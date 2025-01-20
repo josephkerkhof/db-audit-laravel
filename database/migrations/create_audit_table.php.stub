@@ -13,8 +13,8 @@ return new class extends Migration
             $table->id();
 
             // Polymorphic relation fields
-            $table->string('auditable_type');
-            $table->string('auditable_id');
+            $table->string('model_type');
+            $table->string('model_id');
 
             // Audit metadata
             $table->string('event'); // 'created', 'updated', 'deleted'
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
 
             // Regular indexes
-            $table->index(['auditable_type', 'auditable_id'], 'audits_auditable_index');
+            $table->index(['model_type', 'model_id'], 'model_index');
             $table->index('event');
             $table->index('created_at'); // could be improved by using a partial index like YYYY-MM
         });

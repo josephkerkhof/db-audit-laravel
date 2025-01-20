@@ -17,7 +17,7 @@ class DbAuditServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('db-audit-laravel')
-            ->hasConfigFile()
+            ->hasConfigFile('db-audit')
             ->hasViews()
             ->hasMigration('create_audit_table')
             ->hasCommand(DbAuditCommand::class);

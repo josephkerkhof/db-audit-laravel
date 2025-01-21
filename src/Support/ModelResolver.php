@@ -12,8 +12,9 @@ class ModelResolver
     /**
      * Get the model class from a table name.
      *
-     * @param string $table The table name (e.g. 'users')
+     * @param  string  $table  The table name (e.g. 'users')
      * @return string The fully qualified model class name
+     *
      * @throws InvalidArgumentException If the model cannot be resolved
      */
     public static function fromTable(string $table): string
@@ -24,7 +25,7 @@ class ModelResolver
         // Look for the models in these locations
         $locations = config('db-audit.model_locations', []);
         foreach ($locations as $namespace) {
-            $modelClass = trim($namespace, '\\') . '\\' . $modelName;
+            $modelClass = trim($namespace, '\\').'\\'.$modelName;
             if (class_exists($modelClass) && is_subclass_of($modelClass, Model::class)) {
                 return $modelClass;
             }
@@ -34,8 +35,7 @@ class ModelResolver
     }
 
     /**
-     * @param class-string $model The model class to check if it implements the Auditable trait
-     * @return bool
+     * @param  class-string  $model  The model class to check if it implements the Auditable trait
      */
     public static function isAuditable(string $model): bool
     {

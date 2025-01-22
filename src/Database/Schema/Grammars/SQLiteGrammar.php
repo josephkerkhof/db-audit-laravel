@@ -8,9 +8,8 @@ use Illuminate\Support\Fluent;
 
 class SQLiteGrammar extends Base
 {
-    public function compileCreate(Blueprint $blueprint, Fluent $command)
+    public function compileTrigger(Blueprint $blueprint, Fluent $command)
     {
-        dd('i am trying to create');
-        return parent::compileCreate($blueprint, $command);
+        // TODO implement the trigger create for SQLite
     }
 }

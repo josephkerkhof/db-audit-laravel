@@ -9,7 +9,7 @@ class SQLiteGrammar extends Base implements GrammarInterface
     public function compileInsertAuditTrigger(string $triggerName, string $table, array $columns): string
     {
         $jsonObject = collect($columns)
-            ->map(fn($column) => "'{$column}', new.{$column}")
+            ->map(fn ($column) => "'{$column}', new.{$column}")
             ->implode(', ');
 
         return sprintf(
@@ -29,10 +29,10 @@ class SQLiteGrammar extends Base implements GrammarInterface
     public function compileUpdateAuditTrigger(string $triggerName, string $table, array $columns): string
     {
         $oldValuesJsonObject = collect($columns)
-            ->map(fn($column) => "'{$column}', old.{$column}")
+            ->map(fn ($column) => "'{$column}', old.{$column}")
             ->implode(', ');
         $newValuesJsonObject = collect($columns)
-            ->map(fn($column) => "'{$column}', new.{$column}")
+            ->map(fn ($column) => "'{$column}', new.{$column}")
             ->implode(', ');
 
         return sprintf(
@@ -53,7 +53,7 @@ class SQLiteGrammar extends Base implements GrammarInterface
     public function compileDeleteAuditTrigger(string $triggerName, string $table, array $columns): string
     {
         $jsonObject = collect($columns)
-            ->map(fn($column) => "'{$column}', old.{$column}")
+            ->map(fn ($column) => "'{$column}', old.{$column}")
             ->implode(', ');
 
         return sprintf(

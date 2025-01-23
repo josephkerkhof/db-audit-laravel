@@ -29,17 +29,12 @@ class ConnectionFactory extends Base
             return $resolver($connection, $database, $prefix, $config);
         }
 
-        switch ($driver) {
-            case 'mysql':
-                throw new UnsupportedDatabaseException('MySQL is not supported at this time');
-            case 'pgsql':
-                throw new UnsupportedDatabaseException('Postgres is not supported at this time');
-            case 'sqlite':
-                return new SQLiteConnection($connection, $database, $prefix, $config);
-            case 'sqlsrv':
-                throw new UnsupportedDatabaseException('SQL Server is not supported at this time');
-        }
-
-        throw new UnsupportedDatabaseException("Unsupported driver [{$driver}]");
+        return match ($driver) {
+            'mysql' => throw new UnsupportedDatabaseException('MySQL is not supported at this time'),
+            'pgsql' => throw new UnsupportedDatabaseException('Postgres is not supported at this time'),
+            'sqlite' => new SQLiteConnection($connection, $database, $prefix, $config),
+            'sqlsrv' => throw new UnsupportedDatabaseException('SQL Server is not supported at this time'),
+            default => throw new UnsupportedDatabaseException("Unsupported driver [{$driver}]"),
+        };
     }
 }

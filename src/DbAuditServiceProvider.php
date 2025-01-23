@@ -2,6 +2,7 @@
 
 namespace JosephKerkhof\DbAudit;
 
+use Illuminate\Support\Facades\Schema;
 use JosephKerkhof\DbAudit\Database\Connectors\ConnectionFactory;
 use JosephKerkhof\DbAudit\Database\Schema\Builder;
 use Spatie\LaravelPackageTools\Package;
@@ -29,7 +30,7 @@ class DbAuditServiceProvider extends PackageServiceProvider
             return new ConnectionFactory($app);
         });
         $this->app->singleton('db.schema', function ($app) {
-            return new Builder($app['db']);
+            return new Builder($app['db']->connection());
         });
     }
 }

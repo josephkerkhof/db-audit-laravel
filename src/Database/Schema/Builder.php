@@ -2,22 +2,22 @@
 
 namespace JosephKerkhof\DbAudit\Database\Schema;
 
-use Closure;
 use Illuminate\Database\Schema\Builder as Base;
+use JosephKerkhof\DbAudit\Database\Schema\Grammars\GrammarInterface;
 
 class Builder extends Base
 {
-    protected bool $withAuditing = false;
+    /**
+     * The schema grammar instance.
+     *
+     * @var GrammarInterface
+     */
+    protected $grammar;
 
-    public function withAuditing(): static
+    public function withAuditing(string $table): bool
     {
-        $this->withAuditing = true;
-
-        return $this;
-    }
-
-    public function create($table, Closure $callback)
-    {
-        parent::create($table, $callback);
+        return $this->connection->statement(
+            $this->grammar->compileAuditTriggers($table)
+        );
     }
 }

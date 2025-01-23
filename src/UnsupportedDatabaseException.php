@@ -4,6 +4,4 @@ namespace JosephKerkhof\DbAudit;
 
 use Exception;
 
-class UnsupportedDatabaseException extends Exception
-{
-}
+class UnsupportedDatabaseException extends Exception {}

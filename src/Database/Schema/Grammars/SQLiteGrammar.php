@@ -8,7 +8,7 @@ class SQLiteGrammar extends Base implements GrammarInterface
 {
     public function compileAuditTriggers(string $table)
     {
-        dd('im in sqlite audit triggers for table: ' . $table);
+        dd('im in sqlite audit triggers for table: '.$table);
         // TODO implement the trigger create for SQLite
     }
 }

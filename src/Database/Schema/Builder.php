@@ -14,7 +14,7 @@ class Builder extends Base
      */
     protected $grammar;
 
-    public function withAuditing(string $table, array $only = null): void
+    public function withAuditing(string $table, ?array $only = null): void
     {
         $allColumns = collect($this->getColumnListing($table));
 

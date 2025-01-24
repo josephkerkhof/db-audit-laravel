@@ -5,6 +5,9 @@ namespace JosephKerkhof\DbAudit\Database\Connectors;
 use Closure;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Connectors\ConnectionFactory as Base;
+use Illuminate\Database\MySqlConnection as BaseMySqlConnection;
+use Illuminate\Database\PostgresConnection as BasePostgresConnection;
+use Illuminate\Database\SqlServerConnection as BaseSqlServerConnection;
 use JosephKerkhof\DbAudit\Database\Connections\SQLiteConnection;
 use JosephKerkhof\DbAudit\UnsupportedDatabaseException;
 use PDO;
@@ -28,10 +31,10 @@ class ConnectionFactory extends Base
         }
 
         return match ($driver) {
-            'mysql' => throw new UnsupportedDatabaseException('MySQL is not supported at this time'),
-            'pgsql' => throw new UnsupportedDatabaseException('Postgres is not supported at this time'),
+            'mysql' => new BaseMySqlConnection($connection, $database, $prefix, $config),
+            'pgsql' => new BasePostgresConnection($connection, $database, $prefix, $config),
             'sqlite' => new SQLiteConnection($connection, $database, $prefix, $config),
-            'sqlsrv' => throw new UnsupportedDatabaseException('SQL Server is not supported at this time'),
+            'sqlsrv' => new BaseSqlServerConnection($connection, $database, $prefix, $config),
             default => throw new UnsupportedDatabaseException("Unsupported driver [{$driver}]"),
         };
     }
